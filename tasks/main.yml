@@ -1,18 +1,18 @@
 ---
 # tasks file for ansible-role-oracle-instant_client
 - name: Install ubuntu packages
-  apt: 
+  apt:
     name: unzip
     state: present
   when: ansible_distribution == "Ubuntu"
 - name: Install Centos packages
-  yum: 
+  yum:
     name: unzip
     state: present
   when: ansible_distribution == "CentOS"
 
 
-- name: Download Instant_client 
+- name: Download Instant_client
   get_url:
     url: https://download.oracle.com/otn_software/linux/instantclient/195000/instantclient-basic-linux.x64-19.5.0.0.0dbru.zip
     dest: /tmp/instantclient-basic-linux.x64-19.5.0.0.0dbru.zip

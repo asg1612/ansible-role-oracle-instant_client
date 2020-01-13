@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Andrés Sánchez García 
+  author: Andrés Sánchez García
   description: Oracle Instant Client
   company: Sacyl
 
@@ -8,16 +8,16 @@ galaxy_info:
 
   min_ansible_version: 2.9
   platforms:
-    - name:
+    - name: EL
       versions:
         - 7
     - name: Ubuntu
       versions:
         - bionic
-  
-  galaxy_tags: 
-    - Oracle
-    - Instant
-    - Client
-  
+
+  galaxy_tags:
+    - oracle
+    - instant
+    - client
+
 dependencies: []
