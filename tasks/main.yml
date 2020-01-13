@@ -1,0 +1,35 @@
+---
+# tasks file for ansible-role-oracle-instant_client
+- name: Install ubuntu packages
+  apt: 
+    name: unzip
+    state: present
+  when: ansible_distribution == "Ubuntu"
+- name: Install Centos packages
+  yum: 
+    name: unzip
+    state: present
+  when: ansible_distribution == "CentOS"
+
+
+- name: Download Instant_client 
+  get_url:
+    url: https://download.oracle.com/otn_software/linux/instantclient/195000/instantclient-basic-linux.x64-19.5.0.0.0dbru.zip
+    dest: /tmp/instantclient-basic-linux.x64-19.5.0.0.0dbru.zip
+
+- name: Create folder for oracle-instant-client
+  file:
+    path: /opt/ora
+    state: directory
+    mode: '0755'
+
+- name: Extract foo.tgz into /var/lib/foo
+  unarchive:
+    src:  /tmp/instantclient-basic-linux.x64-19.5.0.0.0dbru.zip
+    dest: /opt/ora/
+    remote_src: yes
+
+- name: copy oracle profile environments
+  template:
+    src: oracle.sh
+    dest: /etc/profile.d/oracle.sh
